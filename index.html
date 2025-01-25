@@ -6,7 +6,7 @@
   <title>WhiteSpider</title>
   <style>
     body {
-      background: linear-gradient(135deg, #141414, #1f1f1f);
+      background: linear-gradient(135deg, #101010, #1a1a1a);
       color: #e8e8e8;
       font-family: "Courier New", Courier, monospace;
       margin: 0;
@@ -15,12 +15,28 @@
 
     .container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       height: 100vh;
     }
 
+    .header {
+      background: #0a0a0a;
+      padding: 20px;
+      text-align: center;
+      color: #ff6f00;
+      font-size: 2em;
+      border-bottom: 3px solid #444;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .content {
+      display: flex;
+      flex-grow: 1;
+    }
+
     .sidebar {
-      width: 25%;
+      width: 30%;
       background: #0a0a0a;
       border-right: 3px solid #444;
       overflow-y: auto;
@@ -30,7 +46,7 @@
 
     .sidebar h2 {
       color: #ff6f00;
-      font-size: 1.8em;
+      font-size: 1.6em;
       margin-bottom: 15px;
       text-shadow: 2px 2px 5px #000;
     }
@@ -43,13 +59,14 @@
 
     .options li {
       background: #1e1e1e;
-      margin: 5px 0;
+      margin: 10px 0;
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.3s;
       color: #e8e8e8;
       font-weight: bold;
+      text-align: center;
     }
 
     .options li:hover {
@@ -76,7 +93,7 @@
       background: #121212;
       border-radius: 10px;
       padding: 15px;
-      height: 80%;
+      height: 70vh;
       overflow-y: auto;
       white-space: pre-wrap;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
@@ -93,67 +110,98 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="header">WhiteSpider - Tactical Interface</div>
+  <div class="content">
     <div class="sidebar">
-      <h2>WhiteSpider Options</h2>
+      <h2>Operations</h2>
       <ul class="options" id="options">
         <!-- Options will be populated by JavaScript -->
       </ul>
     </div>
     <div class="main">
-      <h2>Activity Logs</h2>
+      <h2>Operational Logs</h2>
       <div class="logs" id="logs">
         <!-- Logs will appear here -->
       </div>
     </div>
   </div>
   <div class="footer">
-    <p>&copy; 2025 WhiteSpider Inc. | Verify With Orion For Use </p>
+    <p>&copy; 2025 WhiteSpider Inc. | For Educational Purposes Only</p>
   </div>
 
   <script>
     const options = [
-      'IP Trace', 'Social Media Scraper', 'Email Phishing Simulator', 'Database Exploiter', 
-      'Port Scanner', 'GeoLocator', 'Dark Web Crawler', 'Network Sniffer', 
-      'Reverse Engineering Tool', 'Password Decryptor', 'Wi-Fi Interceptor', 'Botnet Manager',
-      'Keylogger Generator', 'Proxy Chain Builder', 'Traffic Analyzer', 'DNS Spoofing Tool',
-      'Packet Injector', 'Cryptography Decoder', 'Zero-Day Exploit Simulator', 'Rootkit Enabler',
-      'Credential Harvester', 'Exploit Kit Manager', 'Steganography Unveiler', 'Malware Compiler'
-    ];
-
-    const fakeLogs = [
-      "[INFO] Initializing modules...",
-      "[INFO] Connecting to secure server...",
-      "[INFO] Authenticating user credentials...",
-      "[SUCCESS] Authentication successful. Access level: Administrator.",
-      "[INFO] Deploying encryption bypass algorithm...",
-      "[INFO] Establishing secure SSH connection to target server...",
-      "[SUCCESS] Connection established with target IP: 203.0.113.42.",
-      "[INFO] Initiating vulnerability scan on target server...",
-      "[SUCCESS] Vulnerability detected: Open port 22 with weak credentials.",
-      "[INFO] Executing brute force attack on SSH service...",
-      "[SUCCESS] SSH login successful. User: root, Password: admin123.",
-      "[INFO] Downloading sensitive data from /var/www/html/private/...",
-      "[INFO] Data packet size: 25MB. Download in progress...",
-      "[SUCCESS] Download complete. File saved as extracted_data.zip.",
-      "[INFO] Attempting to escalate privileges on target machine...",
-      "[SUCCESS] Privilege escalation successful. Root access obtained.",
-      "[INFO] Planting backdoor for persistent access...",
-      "[SUCCESS] Backdoor installed at /usr/bin/hidden_service.",
-      "[INFO] Monitoring network traffic for anomalies...",
-      "[INFO] Packet captured: Source IP 192.168.1.105, Destination IP 203.0.113.42.",
-      "[INFO] Analyzing packet payload for sensitive data...",
-      "[SUCCESS] Detected plaintext credentials in HTTP POST request.",
-      "[INFO] Cross-referencing credentials with known databases...",
-      "[SUCCESS] Match found. Credentials linked to target user account.",
-      "[INFO] Deploying ransomware payload to target system...",
-      "[SUCCESS] Ransomware executed successfully. Files encrypted.",
-      "[INFO] Generating decryption key and sending to secure location...",
-      "[SUCCESS] Key transmission complete. Awaiting ransom payment.",
-      "[INFO] Cleaning up traces to avoid detection...",
-      "[SUCCESS] Log files wiped. Operation complete.",
-      "[INFO] Generating final activity report...",
-      "[SUCCESS] Report saved to /local/system/logs/WhiteSpider_Report.txt."
+      { name: 'IP Trace', logs: [
+          "[INFO] Starting IP trace...",
+          "[INFO] Resolving domain to IP...",
+          "[SUCCESS] Domain resolved: example.com -> 93.184.216.34",
+          "[INFO] Initiating geolocation lookup...",
+          "[SUCCESS] Location: Los Angeles, USA",
+          "[INFO] Retrieving ISP details...",
+          "[SUCCESS] ISP: Example ISP Inc."
+        ] },
+      { name: 'Social Media Scraper', logs: [
+          "[INFO] Connecting to target social media profile...",
+          "[SUCCESS] Profile accessed: john_doe_92",
+          "[INFO] Scraping posts and metadata...",
+          "[SUCCESS] Extracted 200 posts and 50 images.",
+          "[INFO] Analyzing hashtags and user interactions...",
+          "[SUCCESS] Data saved to social_scraper_results.json"
+        ] },
+      { name: 'Email Phishing Simulator', logs: [
+          "[INFO] Generating phishing template...",
+          "[INFO] Configuring sender address as admin@example.com...",
+          "[SUCCESS] Template ready. Deploying email to 500 targets...",
+          "[INFO] Monitoring clicks on phishing link...",
+          "[SUCCESS] 42 targets interacted with the phishing email."
+        ] },
+      { name: 'Database Exploiter', logs: [
+          "[INFO] Searching for open database ports...",
+          "[SUCCESS] Port 3306 open on target server.",
+          "[INFO] Attempting SQL injection attack...",
+          "[SUCCESS] Data retrieved: Users table with 1500 entries.",
+          "[INFO] Exporting sensitive data...",
+          "[SUCCESS] Data saved to data_dump.sql"
+        ] },
+      { name: 'Port Scanner', logs: [
+          "[INFO] Scanning target IP for open ports...",
+          "[INFO] Detected open ports: 22, 80, 443.",
+          "[INFO] Running service detection on open ports...",
+          "[SUCCESS] Port 22: SSH; Port 80: HTTP; Port 443: HTTPS."
+        ] },
+      { name: 'Password Cracker', logs: [
+          "[INFO] Initializing password cracking tool...",
+          "[INFO] Loading common password list...",
+          "[INFO] Testing combinations...",
+          "[SUCCESS] Password cracked: hunter2",
+          "[INFO] Generating report...",
+          "[SUCCESS] Report saved as password_report.txt."
+        ] },
+      { name: 'Malware Injector', logs: [
+          "[INFO] Uploading payload to target system...",
+          "[SUCCESS] Payload deployed successfully.",
+          "[INFO] Activating remote command and control module...",
+          "[SUCCESS] System is under control. Awaiting further commands."
+        ] },
+      { name: 'Traffic Monitor', logs: [
+          "[INFO] Monitoring network traffic...",
+          "[INFO] Detected unusual traffic from IP 192.168.1.15.",
+          "[INFO] Capturing packets for analysis...",
+          "[SUCCESS] 50,000 packets captured and saved for analysis."
+        ] },
+      { name: 'Encryption Breaker', logs: [
+          "[INFO] Starting brute-force attack on encrypted file...",
+          "[INFO] Testing 1,000 keys per second...",
+          "[SUCCESS] Key found: mySecretKey123.",
+          "[INFO] Decrypting file...",
+          "[SUCCESS] File successfully decrypted."
+        ] },
+      { name: 'Device Enumerator', logs: [
+          "[INFO] Scanning local network for connected devices...",
+          "[SUCCESS] Devices found: 5.",
+          "[INFO] Device details: Laptop, Smartphone, IoT Camera, Printer, Router.",
+          "[SUCCESS] Data exported to devices_list.json."
+        ] }
     ];
 
     const optionsList = document.getElementById('options');
@@ -162,25 +210,22 @@
     // Populate the options list
     options.forEach(option => {
       const li = document.createElement('li');
-      li.textContent = option;
+      li.textContent = option.name;
       li.addEventListener('click', () => {
-        generateLogs(option);
+        generateLogs(option.logs);
       });
       optionsList.appendChild(li);
     });
 
-    // Generate fake logs for the selected option
-    function generateLogs(option) {
-      logsDiv.textContent = `Executing: ${option}...\n`;
-      let logCount = Math.floor(Math.random() * 20) + 15; // Random number of logs
-
-      for (let i = 0; i < logCount; i++) {
+    // Generate logs specific to the selected option
+    function generateLogs(logs) {
+      logsDiv.textContent = ""; // Clear previous logs
+      logs.forEach((log, index) => {
         setTimeout(() => {
-          const randomLog = fakeLogs[Math.floor(Math.random() * fakeLogs.length)];
-          logsDiv.textContent += randomLog + '\n';
+          logsDiv.textContent += log + '\n';
           logsDiv.scrollTop = logsDiv.scrollHeight; // Auto-scroll to the bottom
-        }, i * 400); // Delay between logs
-      }
+        }, index * 600); // Delay between logs
+      });
     }
   </script>
 </body>
